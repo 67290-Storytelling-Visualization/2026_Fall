@@ -3,7 +3,7 @@
 ## Step 1: Clone the Starter Repository
 In your local folder on your computer for 67-290. Open Terminal at this folder by CD-ing into it. Please refer to this documentation for help on how to do this in resources.
 
-Clone the repo using this command: 
+Clone the [repo](https://github.com/67290-Storytelling-Visualization/2026_Fall/tree/main/Projects/Project-1-Visualization-Critique) using this command: 
 
 ```bash
 git clone https://github.com/67290-Storytelling-Visualization/2026_Fall
