@@ -17,12 +17,9 @@ directly in HTML or through an Observable notebook cell.
 
 ## Before class
 
-1. Create a free **Tableau Public** account at [public.tableau.com](https://public.tableau.com) (**Sign Up**, top
-   right) and confirm your email.
+1. To register for a Tableau Public Account, visit https://public.tableau.com/en-us/s/
 2. Download [`data/arrests.zip`](data/arrests.zip) and [`data/blotter.zip`](data/blotter.zip) and unzip both. Save
    `arrests.csv` and `blotter.csv` to your desktop.
-3. For Part 2, Option 1 uses VS Code (installed for Lab 1). Option 2 uses a free account at
-   [observablehq.com](https://observablehq.com).
 
 ---
 
@@ -207,12 +204,11 @@ time. To examine this, we can track changes for marijuana sales over time.
 
 - Add a new sheet. We will now make a map that will showcase the spatial nature of this data set.
 - To do this, we first need to transition the X and Y coordinates from numerical fields to geospatial fields. Use the
-  'X' and 'Y' in the arrests.csv list. Right click on the green # next to the 'X' pill in the measures column. From the
+  'X' and 'Y' in the arrests.csv list. Right click on the 'X' pill in the measures column. From the
   resulting drop down menu select geographic role, then Longitude. Repeat this process with the 'Y' pill, but select
   Latitude. You can now use these two pills as geographic coordinates.
 - Now take the 'X' pill to the columns bar and the 'Y' pill to the rows bar. There should now be a map in the
-  visualization space. (Filters apply to one sheet at a time, so filter this sheet to only Marijuana incidents too, as
-  in Exercise 4.)
+  visualization space. (Note: Your data should be filtered to only Marijuana incidents, as in Exercise 4)
 - To bring out our Pittsburgh points, we need to adjust our 'X' and 'Y' pills so they are not represented as an
   average value. To do so, right click on each of the geographic pills in the columns and rows bars. From the resulting
   drop down menu change the pill from a Measure (which is automatically selected) to a Dimension.
@@ -329,9 +325,9 @@ options, go to the 'Device Preview' button at the top left corner of the Dashboa
 
 ### Exercise 8: Saving your work
 
-In Tableau Public, we save our work by publishing it to our Tableau Public profile, which will enable us to work on our
-graphs in Tableau at a later date. Nothing is saved until you publish. However, if we want to share our graphs, it
-might also be helpful save it as a .png.
+There are several ways to save your work in Tableau. In Tableau Public, we save our work by publishing it to our
+Tableau Public profile, which will enable us to work on our graphs in Tableau at a later date. However, if we want to
+share our graphs, it might also be helpful save it as a .png.
 
 - Click 'Download' on the toolbar and select 'Image'.
 
@@ -493,7 +489,7 @@ On Canvas, submit:
 Full marks are for participating and finishing. If something broke and you could not fix it, say so and show us what
 you tried.
 
-Please take the remaining time to explore changes to the graphs we have already made, including changing labels,
+Please take the remaining time in the workshop to explore changes to the graphs we have already made, including changing labels,
 grouping variables, or changing effects with the options in your 'Marks Card'.
 
 If you have any additional questions or wish to attend office hours to receive additional support with visualization
