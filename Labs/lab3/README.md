@@ -2,7 +2,7 @@
 
 **67-290 Storytelling with Data Visualization · CMU-Qatar · Monday 9 November 2026 · 90 minutes · 5 points**
 
-This lab walks through signing on to ArcGIS online account and creating storytelling with maps. It then walks through
+This lab walks through signing on to ArcGIS online account and creating storytelling with maps. This lab walks through
 publishing an ArcGIS web map and embedding it into your Observable dashboard, either directly in HTML or through an
 Observable notebook cell.
 
@@ -17,10 +17,17 @@ Observable notebook cell.
 
 ## Before class: ArcGIS Account Access
 
-Note: There is no need to download ArcGIS Pro desktop. The Pro version will not be used for our class. Rather, we will
-be using the ArcGIS Online product which requires no additional downloaded software.
+Note: There is no need to download ArcGIS Pro desktop as the Heinz software site indicates. The Pro version will not
+be used for our class. Rather, we will be using the ArcGIS Online product which requires no additional downloaded
+software.
 
-1. ESRI ArcGIS Software package access: https://carnegiemellon.maps.arcgis.com/home/index.html
+1. ESRI ArcGIS Software package access:
+
+   https://www.heinz.cmu.edu/current-students/computing-services/software
+
+   Or directly from
+
+   https://carnegiemellon.maps.arcgis.com/home/index.html
 
    ![Sign in to Carnegie Mellon University](images/arcgis-signin.png)
 
@@ -118,7 +125,7 @@ recent fires. Hide the 'California Fire Perimeters (1950+)' layer and show the '
 acres)'. Save your map with a descriptive name and, optionally, some useful tags. Your map will be available in the
 Content section of your account if you need to return to it.
 
-Open the data table ( ... / Show table ). Can you identify the five largest fires, by name, since 2020? (Hint: Sort the
+Open the data table ( ... / Show table ). Can you identify the five largest fires, by name, since 2021? (Hint: Sort the
 table on the 'GIS Calculated Acres') field. Many of these fires caused tremendous damage and loss of life. Select one of
 the largest fires, zoom in on it, and do a quick bit of background research on it. Prepare a few facts about this fire
 to present to the class - one minute, or less. (We'll call on a few students to present their findings.)
@@ -139,7 +146,7 @@ of your chosen fire.) Add a short introduction or subtitle.
 Your work is constantly saved and will be available in the Content section of your account, and will be present as an
 option when you return to the StoryMap builder.
 
-Download or link to a dramatic and relevant 'cover' image for your story map. Add it to your story map where it will
+Download a dramatic and relevant 'cover' image for your story map. Add it to your story map where it will
 appear at the top.
 
 Under 'Design' select a Cover design and a Theme. Use one of the default themes or pick one from the Featured Themes
@@ -162,6 +169,8 @@ Note: If you make any changes to your original Cal Fires map in ArcGIS, these ch
 the next time you load it.
 
 ### Exercise 3: The Famous London Cholera Map (1854)
+
+![Death's Dispensary](images/deaths-dispensary.jpg)
 
 Many people died in Europe during the deadly and recurring cholera epidemics. In times before modern bacteriology,
 medicine, epidemiology and public health, there was great debate and misunderstanding about the causes and spread of
@@ -229,6 +238,8 @@ Experiment with controls or style options as you wish and save your map frequent
 
 ### Exercise 4: The Famous London Cholera Map (1854) - StoryMap
 
+![Death's Dispensary](images/deaths-dispensary.jpg)
+
 Open the London Cholera map you have already created. It should depict three layers - Cholera Cases, Water Pumps and
 Snow's Cholera Map. Refer back to the case study if needed.
 
@@ -277,7 +288,7 @@ the next time you load it.
 Add a credit for the image you downloaded and any other content or finishing touches you would like to complete your
 basic StoryMap.
 
-When you are ready to share your StoryMap, select Publish, and share it with your organization so we can open it.
+When you are ready to share your StoryMap, select Publish, and share it with your organization.
 
 ---
 
@@ -293,7 +304,7 @@ Complete these steps first. You will need your **Web Map ID** before filling out
 ### PRE-STEP 1 — Publish your map
 
 - Find your map on **ArcGIS Online**
-- Save the map, then share it publicly (or with the appropriate organization permissions).
+- Save the map, then share it publicly.
 
 ![Save and Share buttons in ArcGIS Online](images/save-and-share.png)
 
@@ -320,7 +331,7 @@ https://carnegiemellon.maps.arcgis.com/home/item.html?id=YOUR_WEBMAP_ID
 
 ## Option 1: HTML file (`arcgis-map.html`)
 
-Open `arcgis-map.html` and fill in each marked step. ⟦CHECK: Option 1 test⟧
+Open `arcgis-map.html` and fill in each marked step.
 
 ### STEP 1 — Add the ArcGIS CSS
 
@@ -391,19 +402,22 @@ After the SDK script tag, paste. Replace `YOUR_WEBMAP_ID` with the ID you copied
 ## Option 2: Observable Notebook (`observable-notebook.ojs`)
 
 Open `observable-notebook.ojs`. Each comment is a separate cell in Observable.
-Go to [observablehq.com](https://observablehq.com), create a new notebook, and add one cell per step.
-⟦CHECK: Option 2 cells⟧
+Go to [observablehq.com](https://observablehq.com), create a new notebook, and add one cell per step. Cells 1 and 4
+are HTML: before pasting, click the small **ts** label at the cell's top right and choose **HTML**.
 
 ### CELL 1 — Map container
 
 ```html
+<link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/light/main.css" />
 <div id="viewDiv"></div>
 ```
 
 ### CELL 2 — Load the ArcGIS SDK
 
 ```js
-import "https://js.arcgis.com/4.32/";
+window.dojoConfig = { baseUrl: "https://js.arcgis.com/4.32/dojo" };
+await import("https://js.arcgis.com/4.32/init.js");
+const require = window.require;
 ```
 
 ### CELL 3 — Map logic
@@ -446,8 +460,8 @@ require([
 
 ## Notes
 
-- The web map must be shared publicly, or the viewer must have ArcGIS Online access.
-- Interactive features (pan, zoom, pop-ups, layer toggle) work in both options.
+- The web map must be shared publicly.
+- Interactive features (pan, zoom, pop-ups) work in both options.
 - The web map ID is the `?id=` value in the ArcGIS item URL.
 
 ---
