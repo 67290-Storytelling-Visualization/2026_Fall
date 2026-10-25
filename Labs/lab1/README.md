@@ -28,8 +28,6 @@ On Canvas, submit:
 
 1. Link to your **`doha-dashboard`** repo. It must show **5 commits**, including the restore.
 2. **One screenshot** of your finished dashboard.
-3. **Two sentences**: looking at chart 3, which number would *you* put in a public heat warning for Doha — the
-   thermometer or the "feels like"? Why?
 
 Your repo is private, so add the TA, `peidid`, as a collaborator (Settings → Collaborators → Add people) so we can
 grade it.
