@@ -4,7 +4,7 @@
 
 You will build a live dashboard of the next seven days over Doha, using the terminal, Git, GitHub, Node.js and
 Observable Framework. Then you will change two numbers to turn it into a dashboard of Pittsburgh, and use Git to
-bring Doha back.
+bring Doha back. Finally, you will put it on the internet with Vercel.
 
 ---
 
@@ -19,22 +19,15 @@ Open **[`Lab1-Under-the-Hood.ipynb`](./Lab1-Under-the-Hood.ipynb)** and follow i
 file you need.
 
 - Read it here on GitHub, in your browser. There is nothing to clone or download.
-- Copy each command into your terminal, and each code block into the file it names. Don't run the cells in Jupyter
-  or VS Code.
+- Type each command into your terminal yourself (typing is how you learn them), and copy each code block into the
+  file it names. Don't run the cells in Jupyter or VS Code.
 
 ## What to submit
 
-On Canvas, submit:
-
-1. Link to your **`doha-dashboard`** repo. It must show **5 commits**, including the restore.
-2. **One screenshot** of your finished dashboard.
+On Canvas, submit **the link to your live dashboard** on Vercel (Step 13 in the notebook).
 
 Your repo is private, so add the TA, `peidid`, as a collaborator (Settings → Collaborators → Add people) so we can
-grade it.
+see its **5 commits**, including the restore.
 
 Full marks are for participating and finishing. If something broke and you could not fix it, say so and show us
 what you tried.
-
-## Optional take-home
-
-Put your dashboard on the internet with Vercel. See *Optional · Put it on the internet* at the end of the notebook.
