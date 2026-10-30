@@ -2,8 +2,8 @@
 
 **67-290 Storytelling with Data Visualization · CMU-Qatar · Saturday 31 October 2026 · 90 minutes · 5 points**
 
-This lab walks through publishing a Tableau visualization and embedding it into your Observable dashboard, either
-directly in HTML or through an Observable notebook cell.
+This lab walks through publishing a Tableau visualization and embedding it in a web page with HTML, the same way you
+can embed it in an Observable dashboard.
 
 ## Files in this folder
 
@@ -12,8 +12,7 @@ directly in HTML or through an Observable notebook cell.
 | `README.md` | Full lab instructions (this page) |
 | `data/arrests.zip`, `data/blotter.zip` | The two datasets for Part 1 |
 | `images/` | Images used on this page |
-| `tableau-embed.html` | Starter file for Option 1 (HTML embed) |
-| `tableau-notebook.ojs` | Starter file for Option 2 (Observable embed) |
+| `tableau-embed.html` | Starter file for Part 2 (HTML embed) |
 
 ## Before class
 
@@ -33,9 +32,9 @@ directly in HTML or through an Observable notebook cell.
 
 ## Workshop Exercises
 
-Sample output dashboard (see below)
+Expected final dashboard, embedded in `tableau-embed.html` in Part 2 (see below)
 
-![Sample output dashboard](images/sample-dashboard.png)
+![Expected final dashboard](images/expected-dashboard.png)
 
 Data for these exercises comes from the Western PA Regional Data Center website. Use the `.csv` files you unzipped
 before class, in `Lab2_Fall2026/data`:
@@ -171,8 +170,8 @@ trained to do so in the context of a bar chart.
 - **Reordering rows and columns:** You can also order your columns or rows variables by dragging them into different
   positions along the axis bar. Try this by moving the 'Under 18' category to be first variable along the axis.
 - **Final version:** For your dashboard, end with the stacked bar chart. Remove 'Gender' from the rows bar, so that only
-  'AGE (group)' is on the rows bar and 'Gender' is on Color, with 'Under 18' first. This is the 'Age by Gender Bar
-  Chart' in the sample dashboard above.
+  'AGE (group)' is on the rows bar and 'Gender' is on Color, with 'Under 18' first. This is the bar chart in the
+  expected dashboard above.
 - Label and name your sheet.
 
 ### Exercise 4: Visualize marijuana sales vs. possession incidents by month
@@ -307,14 +306,14 @@ To upload your visualizations from your workbook to the internet:
 
 # Part 2 · Embedding a Tableau Visualization
 
-Follow the steps below to find your Tableau URL, then embed it using either Option 1 (HTML) or Option 2 (Observable).
-The two starter files, `tableau-embed.html` and `tableau-notebook.ojs`, are in this folder.
+Follow the steps below to find your Tableau URL, then embed it in the starter file `tableau-embed.html`, which is in
+this folder.
 
 ## Before You Begin: Get Your Tableau URL
 
 Complete these steps first. You should have just created a Tableau visualization after following the tutorial in class!
 
-In this lab, you will need your **Tableau viz URL** before filling out either template.
+In this lab, you will need your **Tableau viz URL** before filling out the template.
 
 ### PRE-STEP 1 — Publish your viz
 
@@ -334,11 +333,22 @@ https://public.tableau.com/views/YOUR_WORKBOOK_NAME/YOUR_SHEET_NAME
 
 📷 ![where to find link](images/share-link.png)
 
-> **Keep this URL handy** — you will paste it into the code in both options below.
+**Important: Ensure you have deleted all tracking parameters from your URL so it ends cleanly with your dashboard
+name. Remove everything from the ? onward.**
+
+**Example of link:**
+
+Before:
+https://public.tableau.com/views/Lab3_17611071284150/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
+
+After:
+https://public.tableau.com/views/Lab3_17611071284150/Dashboard1
+
+> **Keep this URL handy** — you will paste it into the code below.
 
 ---
 
-## Option 1: HTML file (`tableau-embed.html`)
+## Embed it: HTML file (`tableau-embed.html`)
 
 Open `tableau-embed.html` in **VSCode** and fill in each marked step.
 
@@ -382,56 +392,6 @@ After the `<tableau-viz>` element, paste:
 
 ---
 
-## Option 2: Observable Notebook (`tableau-notebook.ojs`)
-
-Open `tableau-notebook.ojs`. Each block is a separate cell in Observable.
-Go to [observablehq.com](https://observablehq.com), create a new notebook, and add one cell per step. Cells 2 and 3
-are HTML: before pasting, click the small **ts** label at the cell's top right and choose **HTML**.
-
-### CELL 1 — Load the Tableau Embedding API
-
-```js
-import("https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js");
-```
-
-### CELL 2 — Viz size
-
-```html
-<style>
-  tableau-viz {
-    width: 100%;
-    height: 800px;
-  }
-</style>
-```
-
-### CELL 3 — Tableau viz container
-
-Replace `YOUR_TABLEAU_URL` with the URL you copied in Pre-Step 2.
-
-**Important: Ensure you have deleted all tracking parameters from your URL so it ends cleanly with your dashboard
-name. Remove everything from the ? onward.**
-
-**Example of link:**
-
-Before:
-https://public.tableau.com/views/Lab3_17611071284150/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
-
-After:
-https://public.tableau.com/views/Lab3_17611071284150/Dashboard1
-
-```html
-<tableau-viz
-  src="YOUR_TABLEAU_URL"
-  width="100%"
-  height="800px">
-</tableau-viz>
-```
-
-**Done.** The viz renders live inside the Observable notebook.
-
----
-
 ## Notes
 
 - The viz must be published publicly, or the viewer must have Tableau Cloud/Server access.
@@ -446,16 +406,28 @@ https://public.tableau.com/views/Lab3_17611071284150/Dashboard1
 On Canvas, submit:
 
 1. The link to your published **Tableau Public** dashboard (the URL from Pre-Step 2).
-2. Your embed from Part 2:
-   - **Option 2:** the link to your Observable notebook. Set it to **Unlisted** first (the globe icon in the
-     notebook's sidebar), so we can open it.
-   - **Option 1:** your `tableau-embed.html` file.
+2. Your `tableau-embed.html` file from Part 2.
 
 Full marks are for participating and finishing. If something broke and you could not fix it, say so and show us what
 you tried.
 
-Please take the remaining time in the workshop to explore changes to the graphs we have already made, including changing labels,
+Please take the remaining time in the lab to explore changes to the graphs we have already made, including changing labels,
 grouping variables, or changing effects with the options in your 'Marks Card'.
 
 If you have any additional questions or wish to attend office hours to receive additional support with visualization
 you made today or for a project, please email the TA: peidid@andrew.cmu.edu.
+
+---
+
+### What you did today
+
+You linked two police datasets by their report number, removed ages that could not be real, and built four views of
+the same data: a table and a bar chart of who is arrested at what age, a timeline of marijuana incidents, and a map of
+where arrests happen. You put them in one dashboard where clicking the table filters the map, published it on Tableau
+Public, and embedded it in a web page with a few lines of HTML, the same way you can embed it in an Observable
+dashboard.
+
+Along the way you made storytelling decisions: which values to leave out, which years to show (a line across ten empty
+years would tell a story the data does not support), and which colors your audience will read correctly.
+
+**In Project 2, you will use the same data to tell a story of your own.**
