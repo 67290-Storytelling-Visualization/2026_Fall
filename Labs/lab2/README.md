@@ -18,8 +18,14 @@ directly in HTML or through an Observable notebook cell.
 ## Before class
 
 1. To register for a Tableau Public Account, visit https://public.tableau.com/en-us/s/
-2. Download [`data/arrests.zip`](data/arrests.zip) and [`data/blotter.zip`](data/blotter.zip) and unzip both. Save
-   `arrests.csv` and `blotter.csv` to your desktop.
+2. Get the lab files onto your laptop. In a terminal, navigate to the folder of your choice using 'cd ' command, then run:
+
+   ```
+   git clone https://github.com/67290-Storytelling-Visualization/Lab2_Fall2026.git
+   ```
+
+   This downloads the Lab 2 files into a `Lab2_Fall2026` folder. Open `Lab2_Fall2026/data` and unzip `arrests.zip`
+   and `blotter.zip` there.
 
 ---
 
@@ -31,8 +37,8 @@ Sample output dashboard (see below)
 
 ![Sample output dashboard](images/sample-dashboard.png)
 
-Data for these exercises comes from the Western PA Regional Data Center website. Use the `.csv` files you saved to
-your desktop before class:
+Data for these exercises comes from the Western PA Regional Data Center website. Use the `.csv` files you unzipped
+before class, in `Lab2_Fall2026/data`:
 
 - **Dataset 1:** Police Blotter Data (UCR Coded), `blotter.csv`: https://data.wprdc.org/dataset/uniform-crime-reporting-data
 - **Dataset 2:** Arrests, `arrests.csv`: https://data.wprdc.org/dataset/arrest-data
@@ -46,7 +52,7 @@ Our first exercise involves uploading our data into Tableau. We can do this from
 window, we can see multiple places from which we can access datasets and the types of datasets we can add.
 
 - **Connect to a dataset:** Choose 'Upload from computer'. From there, select one of the two city crime data files
-  from your desktop (start with `arrests.csv`).
+  from `Lab2_Fall2026/data` (start with `arrests.csv`).
 - Once you have uploaded this file, you will be taken to the 'Data Source' pane. You can switch to this pane at any
   time by selecting the 'Data Source' tab at the bottom of the Tableau window.
 - We still need to add our second data set. From the 'Connections' section at the top left of the Tableau window,
