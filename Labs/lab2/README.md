@@ -51,7 +51,7 @@ Public does not save automatically, so publish your work now and then (see Exerc
 Our first exercise involves uploading our data into Tableau. We can do this from the 'Connect to Data' window. In this
 window, we can see multiple places from which we can access datasets and the types of datasets we can add.
 
-- **Connect to a dataset:** Choose 'Upload from computer'. From there, select one of the two city crime data files
+- **Connect to a dataset:** Choose 'Files' 'Upload from computer'. From there, select one of the two city crime data files
   from `Lab2_Fall2026/data` (start with `arrests.csv`).
 - Once you have uploaded this file, you will be taken to the 'Data Source' pane. You can switch to this pane at any
   time by selecting the 'Data Source' tab at the bottom of the Tableau window.
@@ -59,21 +59,22 @@ window, we can see multiple places from which we can access datasets and the typ
   select 'Add'. From here, you will see a window pop up that looks like the connect page where we uploaded the first
   file. Follow the same process as above to add the second dataset.
 
-Once at the data source pane, drag `blotter.csv` over to the large white space, next to `arrests.csv`. Tableau asks how
+Once at the data source pane, under 'Files', drag `blotter.csv`over to the large white space, right next to `arrests.csv`. Tableau asks how
 the two files are related.
 
 - Under arrests.csv choose 'CCR', and under blotter.csv choose 'CCR (blotter.csv)', so that Tableau joins on the CCR
   field (this is a unique incident report number assigned to crime incidents in the blotter and arrest files).
 
-**NOTE:** It is also possible to adjust our data fields in the 'Data Source' pane. You will notice that your data has
-been entered into Tableau in a way similar to an Excel sheet, with columns and rows. However, unlike Excel our column
-headers are separated from the rest of our data. Each column has a title, but they also have a small icon that
-distinguishes the type of data entered within the rows of that column. You may notice that there are icons depicting
-text ('abc') or numerical data ('#'), as well as date data (shown as a desk calendar) or geospatial data (shown as a
-globe). You may also note that each icon is either blue or green. Blue icons relate to categorical or qualitative data,
-which Tableau calls Dimensions. Green icons represent what Tableau determines is quantitative data (or Measures). You
-can change your columns data type by right clicking on the icon and selecting which category, numerical or text,
-measure or dimension, you would like to switch the data to.
+**What is a join?** The two files describe different things. `arrests.csv` has one row per person arrested (their
+age, gender, offense and location). `blotter.csv` has one row per incident the police recorded (what kind of incident
+it was, when and where). Both have a `CCR` column, the incident's report number. A join matches the rows that share a
+CCR, so each arrest is linked to the incident it came from. For example, CCR 16158872 is a 42-year-old woman arrested
+for retail theft in `arrests.csv`, and a shoplifting incident in Bloomfield in `blotter.csv`. (Tableau calls this link
+a relationship.)
+
+Once the files are linked, one chart can use columns from both. In Exercise 5, for example, you will map arrests from
+`arrests.csv`, but only those for marijuana incidents, a column in `blotter.csv`. Not every row finds a partner: almost
+every arrest matches an incident, but only about one incident in six led to an arrest.
 
 Click on the Sheet 1 tab at the bottom of the window. We are now ready to start visualizing our data!
 
@@ -83,14 +84,20 @@ For our first visualization, let's make a table. In many cases, instead of makin
 to visualize data so your audience can understand it quickly. Tableau also makes it easier to incorporate multiple
 variables in many configurations to create attractive tables.
 
-To make a contingency table in Tableau you need to work with both 'Dimensions' and 'Measures'. Dimensions represent
-categorical data while Measures represent quantitative data. Tableau will automatically separate out what it thinks
-are Dimensions into the Dimensions section on the left side of the screen, denoted by blue icons. Measures are located
-under the Measures section with green icons, below a thin gray line. These icons relate to things that represent
-either text ('abc') or numerical ('#') values. Additional icons represent geographic or temporal information.
+To make a contingency table in Tableau you need to work with both 'Dimensions' and 'Measures':
+
+| | Dimensions | Measures |
+|---|---|---|
+| **What they are** | Categories you group by (qualitative) | Numbers you count, add up or average (quantitative) |
+| **Color** | Blue | Green |
+| **Where** | Left side of the screen, above the thin gray line | Below the thin gray line |
+| **Examples in this lab** | `Gender`, `Incidenthierarchydesc`, `Incidenttime` | `arrests.csv (Count)`, and `AGE` until you change it below |
+
+Tableau sorts fields into the two groups automatically, but it can guess wrong. The icon next to each field shows its
+type: 'abc' for text, '#' for numbers, and other icons for dates and geographic data.
 
 - **Make a table:** To make a contingency table based on the offender's age and gender, we need to change our 'AGE'
-  variable from a 'Measure' to a 'Dimension'. To do this, drag the 'AGE' variable from the Measure's section to the
+  variable from a 'Measure' to a 'Dimension'. To do this, drag the 'AGE' variable (in the arrests.csv list) from the Measure's section to the
   Dimension's section.
 - Now that both AGE and 'Gender' are Dimensions we can create a table based on these variables.
 - Drag Gender to Columns input and AGE to the Rows input.
@@ -98,18 +105,20 @@ either text ('abc') or numerical ('#') values. Additional icons represent geogra
 You can see that there is now a table that compares AGE to Gender. However, all the places that should have values are
 denoted by 'abc'. This indicates that there is no quantitative information currently available in this table.
 
-- **Adding counts to a table:** To add our counts for each variable, select 'arrests.csv (Count)'. Drag this variable
+- **Adding counts to a table:** To add our counts for each variable, select 'arrests.csv (Count)' under 'arrests.csv'. Drag this variable
   to the 'Text' box within the 'Marks' card, which is to the left of the graphing space and to the right of the
   Dimensions section. You will now see that there are counts of each group of offenders by age and gender.
 
 However, this is not a very concise table. We can assume that it would be more useful to group different ages
 together, to make the table easier to read.
 
+- **Exclude null values:** Before grouping, clean up the table by excluding null and incorrect values. In this dataset
+  you may see age values for NULL, 0, 117 and 999. These are not real ages but missing or mistyped entries. Simply
+  right click on these and choose Exclude from the dropdown menu.
 - **Creating age groups:** To group our age variables together by increments of several years (Under 18, 18-25,
   26-40, 41-65, Over 65), start by creating the first grouping. This can be done by selecting at once all ages between
   10 and 17, by clicking on 10 in the table, holding the shift key down and clicking on 17. Once these have been
-  selected a window will pop up with different options on how you can adapt the appearance and connection of these
-  ages. Select the paperclip, which is Tableau's icon to group variables.
+  selected, right-click one of the selected ages and choose 'Group'.
 
 This will then combine the counts for ages between 10 and 17.
 
@@ -118,9 +127,6 @@ This will then combine the counts for ages between 10 and 17.
   variables. Rename this field 'Under 18'.
 - Now, continue to group the age variable to showcase counts of crimes by age and gender as age groups. For example,
   create groups for 18-25, 26-40, 41-65 and Over 65.
-- **Exclude null values:** To further clean up the table, you can exclude null and incorrect values. In this dataset
-  you may see age values for NULL, 0, 117 and 999. Simply right click on these and choose Exclude from the dropdown
-  menu.
 - **Reordering rows:** You can reorder the age groups by dragging and dropping. Move the Under 18 age group to the top
   of the column.
 - **Adding color:** To add further context, you can drag the 'CNT(arrests.csv)' measures from the marks card variable
@@ -128,7 +134,7 @@ This will then combine the counts for ages between 10 and 17.
   centered. To add in the text label, click the T icon located in the menu bar.
 - **Adding totals:** To add more detail to our table, we can add totals fields. To do this, toggle from the 'Data' tab
   that shows our dimensions and measures, to the 'Analytics' tab. From here, click and drag 'Totals' to the table.
-  Choose to add row or column totals.
+  Choose to add row or column totals, or you can add both by dragging twice.
 
 ### Exercise 3: Visualize offender age group and gender in a stacked or side-by-side bar chart
 
@@ -136,12 +142,14 @@ Now that we have made a table, it will be easy for us to explore the same inform
 charts are a great way to compare values across categories as humans are adept at comparing lengths and have been
 trained to do so in the context of a bar chart.
 
-- **Create and name a new sheet:** Before we begin, start a new sheet. Label this sheet something that will be
+- **Create and name a new sheet:** Before we begin, at the bottom of the screen, start a new sheet. Label this sheet something that will be
   meaningful for your analysis, such as "Offender age Group and Gender".
 - **Create a Bar Chart:** To create a bar chart based on gender and age, first bring the 'arrests.csv (Count)' variable
   to the columns bar. Then bring the grouped 'AGE' field from our 'Dimensions' table to the rows bar. This will be a new
   field based on the groupings we did in the last chart. It will be shown as the 'AGE' with a paperclip and not an '#'
   next to it.
+- **Exclude null values again:** Null, 0, 117 and 999 are back, because an Exclude only applies to the sheet where you
+  made it. Right click on each of them and choose Exclude, as in Exercise 2.
 - **Stacking variables:** We now have a bar chart showing Age by groups from exercise 2. To add gender to our
   visualization, drag 'Gender' to Color in the Marks card. You now have a stacked bar chart by our age categories, with
   Female designation represented in blue and Male represented in orange. You may want to change these colors, as your
@@ -162,8 +170,9 @@ trained to do so in the context of a bar chart.
   first.
 - **Reordering rows and columns:** You can also order your columns or rows variables by dragging them into different
   positions along the axis bar. Try this by moving the 'Under 18' category to be first variable along the axis.
-- To add color back to the graph, simply drag the 'Gender' pill from the Dimensions column to the color box within the
-  marks card. The color choices from earlier in the exercise should still be in effect.
+- **Final version:** For your dashboard, end with the stacked bar chart. Remove 'Gender' from the rows bar, so that only
+  'AGE (group)' is on the rows bar and 'Gender' is on Color, with 'Under 18' first. This is the 'Age by Gender Bar
+  Chart' in the sample dashboard above.
 - Label and name your sheet.
 
 ### Exercise 4: Visualize marijuana sales vs. possession incidents by month
@@ -171,19 +180,21 @@ trained to do so in the context of a bar chart.
 Line graphs are also excellent ways to view information, especially if that information is related to change over
 time. To examine this, we can track changes for marijuana sales over time.
 
+- Add a new sheet.
 - **Using filters:** First, we need to use a filter to extract Marijuana sales and possession incidents from the
-  'Incidenthierarchydesc' Dimension category. To do this, first drag the 'Incidenthierarchydesc' to the Filters card,
+  'Incidenthierarchydesc' Dimension category (under 'blotter.csv'). To do this, first drag the 'Incidenthierarchydesc' to the Filters card,
   above the Marks card. In the window that opens, choose to select only the variables we want; in this case, Marijuana
   sales and possession incidents or 'MARIJUANA-POSSESS' and 'MARIJUANA-SALE/MFG' (type MARIJUANA in the search box to
-  find them), and click OK. Then right click on the 'Incidenthierarchydesc' pill and select 'Show Filter'. This will
-  open up a list of all variable types on the right hand side of the Tableau window, where we saw the color key in
-  earlier exercises. As we have selected only this information, our visualization will only return information on
+  find them), and click OK. As we have selected only this information, our visualization will only return information on
   Marijuana related incidents.
 - **Create a line graph:** To create a line graph that shows the trends in this information over time, take the
   'Incidenttime' from the Dimensions field and place it in the columns bar. Then, bring 'blotter.csv (Count)' over to
   the rows bar. You should now have a line graph representing the total count of all Marijuana incidents between 2016
   and 2023 (some older reports are dated 2005). We can assume that these are the years that are included in our data
   set.
+- **Start from 2016:** There are no reports between 2005 and 2016, so the 2005 reports would leave a long gap, which
+  later becomes a straight line across ten years without data. Drag 'Incidenttime' to the Filters card, choose
+  'Years', untick 2005, and click OK.
 - In the columns bar, you can see that the 'Incidenttime' pill has converted to read years with a + mark in front of
   it. This is indicating that though Tableau will automatically show years associated with our variables, there is
   more information we can access through this pill. If we click the drill down button (plus mark in the year pill) we
@@ -214,7 +225,10 @@ time. To examine this, we can track changes for marijuana sales over time.
   resulting drop down menu select geographic role, then Longitude. Repeat this process with the 'Y' pill, but select
   Latitude. You can now use these two pills as geographic coordinates.
 - Now take the 'X' pill to the columns bar and the 'Y' pill to the rows bar. There should now be a map in the
-  visualization space. (Note: Your data should be filtered to only Marijuana incidents, as in Exercise 4)
+  visualization space.
+- Filter this sheet to only Marijuana incidents, as in Exercise 4: drag 'Incidenthierarchydesc' to the Filters card
+  and select 'MARIJUANA-POSSESS' and 'MARIJUANA-SALE/MFG'. You need to do this again because a filter only applies to
+  the sheet where you made it.
 - To bring out our Pittsburgh points, we need to adjust our 'X' and 'Y' pills so they are not represented as an
   average value. To do so, right click on each of the geographic pills in the columns and rows bars. From the resulting
   drop down menu change the pill from a Measure (which is automatically selected) to a Dimension.
@@ -223,14 +237,14 @@ time. To examine this, we can track changes for marijuana sales over time.
   Tableau window. Choose the arrow at the bottom of the pop up bar—this will open more options to navigate the map.
   Click the button that has a square covered by a magnifying glass. This will allow you to drag a box over points on
   the map to zoom into those points.
-- Next change the 'Council District' pill to a Dimension pill following the steps we used for 'AGE'. Then, bring the
+- Next change the 'Council District' pill (in the arrests.csv list) to a Dimension pill following the steps we used for 'AGE'. Then, bring the
   pill to the 'Color' box in the 'Marks' Card. You can see there are now multiple points that are colored by council
   district, which provides us some context for differences within the map. However, these points are still hard to
   distinguish.
 - To make the map easier to read, drag the Measure pill 'arrests.csv (Count)' to the 'Size' box within the 'Marks'
   Card'. This will now create and order of size by number of events at any location. To make these changes easier to
   see, click on the 'Size' box within the Marks card; this will allow you to alter the size of each point within the
-  map. Do so by dragging the resulting pop up window under the 'Size' marks card to the right. Making this change may
+  map. Do so by dragging the Mark Size to the right. Making this change may
   be able to help us determine which council districts have the most marijuana related incidents.
 - You can also see that there are now two keys next to our map on the right side of the visualization window, one for
   council district which is shown by color, and one for the number of incidents reported which is shown by size. This
@@ -245,20 +259,12 @@ visualizations. In the Dashboard frame, you can showcase multiple visualizations
 To open a new dashboard:
 
 - Select 'New Dashboard' icon
-- Add our table and map graphs to the visualization pane by dragging them from the sheets menu
-- As they are added, the sheets will snap to quadrants within the frame (if the objects field 'tiled' is selected)
-- To change the position of the boxes, select 'floating'
-
-Now that all three sheets are in our frame, we can see that the Key on the right side of the screen leaves a lot of
-empty unused space in the frame, due to the way the Tiled option has placed them.
-
-To bring these Keys closer to the visualizations
-
-- Select the key and right click.
-- Select the drop-down arrow.
-- Select the option for 'floating'.
-- Drag the key to lay over the correct visualization.
-- Repeat with all keys.
+- In the 'Objects' section at the bottom left, select 'Floating' (instead of 'Tiled'), so that everything you add
+  stays where you drop it
+- Add your four sheets (the table, the bar chart, the line graph and the map) to the visualization pane by dragging
+  them from the sheets menu
+- Move each box by dragging it, and resize it by dragging its edges or corners, so that the sheets don't overlap
+- Each sheet's keys come in floating too. Drag each key next to the visualization it belongs to
 
 To help with analysis in the Dashboard frame, you can set it so one graph can control what information is shown in
 the other. This can be done by setting one graph as the 'Filter' for the whole Dashboard.
@@ -267,67 +273,20 @@ the other. This can be done by setting one graph as the 'Filter' for the whole D
   filter'
 - Try selecting different age groups from the table to see the map change shape.
 
-You can also add new tiles, or windows, into our Dashboard space. To do this, look towards the section of the
-Dashboard frame where we could select visualization framing as Tiled or floating.
+### Exercise 7 (optional): Enhancing visualization
 
-You can also use Dashboards as a way to make a group of visualization look better laid out for a static image. This
-can involve giving individual sheets within the data frames borders.
+If time is tight, skip to Exercise 8. You will want these features for Project 2, so come back to them later.
 
-- Go to the 'Layout' tab.
-- Go to the 'Item Hierarchy'
-- Click the drop down option 'Tiled'.
-- Select a sheet.
-- Under border, select a line style.
-
-Dashboards are also great because they allow you to control the format across all visualizations. to access format
-options, go to the main menu at the top of the Tableau frame and select 'Format'- 'Workbook'. From here you can change
-the text for titles and text within all visualizations.
-
-Dashboards frame also allow you to see how your dashboard work space might look on different screens. To explore these
-options, go to the 'Device Preview' button at the top left corner of the Dashboard frame.
-
-### Exercise 7: Enhancing visualization
-
-- **Titles:** At any time during your work, you have the option to add further context to your visualization. This can
-  be done by giving a title to your work.
-- You can do this in two ways. The first is to name the sheet itself. To name the sheet, right click on the tab for the
-  sheet at the bottom of the window that you are working on and rename the file. This will automatically change the
-  title at the top of your visualization.
-- You can also change the title directly in the visualization frame by double clicking on the title itself.
-- **Tool Tip:** To add more detail to your graphs, it is possible to add a point of information to your sheet to draw
-  the eye of your audience. As we have been working in Tableau, you may have noticed that when you drag your cursor
-  across the screen, when there is information in your sheet a small square of information on the point of data you
-  are hovering over will pop up. In Tableau, this functionality is called Tool Tip. It is possible for you to edit your
-  Tool Tip to reflect different types of information.
-- To edit the Tool Tip, click on the 'Tool Tip' card within the 'Marks Card'. The 'Edit Tool Tip' box will open in the
-  main visualization frame. Within this box it is possible to alter the tool tip text. You can do so by typing anything
-  you want into the text field.
-- Much like with the labels for our sheets being present in the title field, you will notice that the Tool Tip
-  automatically shows all of the variable values visible within the visualization through greyed out text underneath
-  the &lt;variable name&gt;. You can delete these and the values for deleted variables will not appear in the
-  scrolling Tool Tip. If you want to re-add a variable, go to the 'Insert' drop down option and you will see all of
-  the variables visible in the frame listed as well as other contextual information that can be automatically
-  generated based on your graph, such as the 'Sheet Name' or the 'Data Source Name'.
-- It is also possible to change the formatting of the text in your Tool Tip view through the Edit Tool Tip box.
-- **Annotations:** If you want to publish your graph, it can be important to create a static annotation that will be
-  visible in print. To achieve this, you can annotate your graph. To annotate your graph, right click on the point you
-  wish to draw attention to.
-- From the drop-down menu, select 'Annotate' and then 'Point'. A text box will open, allowing you to write something to
-  describe or draw attention to this point. Write something and then click OK. You can now see this point of
-  information included in the background of your graph over this point.
-- Take time now to also play around with the other two types of annotation, 'Mark' and 'Area'.
-- **Trend Lines:** It might be helpful add trend lines to your graphs, as they can provide more information on the
-  p-value or r-squared value of your data spread.
-- Go to the 'Analytics' tab.
-- Drag 'Trend Line' onto the graph.
-- **Calculated Fields:** One additional function that Tableau allows for making more complex analysis is the option to
-  create our own 'Calculated Fields'. Calculated fields allow you to show results of certain variables when adapted by
-  a calculation that will adjust the result.
-- To create a calculated field, from the top menu in Tableau select 'Analysis' and then 'Create Calculated Field'.
-- This opens the calculated fields view, where you can create new measure or dimension values by applying equations to
-  your fields.
-- To add dimensions or measures, type in the name of the pill.
-- You can also add various pre-set functions from the side pane of the calculated field view.
+- **Titles:** Give each visualization a title that tells your audience what it shows. Right click on the sheet's tab at
+  the bottom of the window and rename it; the title at the top of your visualization changes too. You can also double
+  click on the title itself to edit it.
+- **Tool Tip:** When you hover over a point of data, a small square of information pops up. In Tableau, this is called
+  the Tool Tip. To edit it, click on the 'Tool Tip' card within the 'Marks' card. In the 'Edit Tool Tip' box, you can
+  type any text you want, delete the greyed out &lt;variable name&gt; fields you don't need, and re-add fields from the
+  'Insert' drop down.
+- **Annotations:** An annotation is a note that stays visible on your graph, even in print, to draw attention to a
+  point. Right click on the point you wish to draw attention to, select 'Annotate' and then 'Point', write something,
+  and click OK.
 
 ### Exercise 8: Saving your work
 
