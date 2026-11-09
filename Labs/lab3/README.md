@@ -3,8 +3,8 @@
 **67-290 Storytelling with Data Visualization · CMU-Qatar · Monday 9 November 2026 · 90 minutes · 5 points**
 
 This lab walks through signing on to ArcGIS online account and creating storytelling with maps. This lab walks through
-publishing an ArcGIS web map and embedding it into your Observable dashboard, either directly in HTML or through an
-Observable notebook cell.
+publishing an ArcGIS web map and embedding it in a web page with HTML, the same way you can embed it in an Observable
+dashboard.
 
 ## Files in this folder
 
@@ -12,8 +12,7 @@ Observable notebook cell.
 |---|---|
 | `README.md` | Full lab instructions (this page) |
 | `images/` | Images used on this page |
-| `arcgis-map.html` | Starter file for Option 1 (HTML embed) |
-| `observable-notebook.ojs` | Starter file for Option 2 (Observable embed) |
+| `arcgis-map.html` | Starter file for Part 2 (HTML embed) |
 
 ## Before class: ArcGIS Account Access
 
@@ -294,12 +293,12 @@ When you are ready to share your StoryMap, select Publish, and share it with you
 
 # Part 2 · Embedding an ArcGIS Map
 
-Follow the steps below to find your map URL, then embed it using either Option 1 (HTML) or Option 2 (Observable).
-The two starter files, `arcgis-map.html` and `observable-notebook.ojs`, are in this folder.
+Follow the steps below to find your map URL, then embed it in the starter file `arcgis-map.html`, which is in this
+folder.
 
 ## Before You Begin: Get Your ArcGIS Map URL
 
-Complete these steps first. You will need your **Web Map ID** before filling out either template.
+Complete these steps first. You will need your **Web Map ID** before filling out the template.
 
 ### PRE-STEP 1 — Publish your map
 
@@ -325,11 +324,11 @@ Example URL:
 https://carnegiemellon.maps.arcgis.com/home/item.html?id=YOUR_WEBMAP_ID
 ```
 
-> **Keep this ID handy** — you will paste it into the code in both options below.
+> **Keep this ID handy** — you will paste it into the code below.
 
 ---
 
-## Option 1: HTML file (`arcgis-map.html`)
+## Embed it: HTML file (`arcgis-map.html`)
 
 Open `arcgis-map.html` and fill in each marked step.
 
@@ -399,69 +398,10 @@ After the SDK script tag, paste. Replace `YOUR_WEBMAP_ID` with the ID you copied
 
 ---
 
-## Option 2: Observable Notebook (`observable-notebook.ojs`)
-
-Open `observable-notebook.ojs`. Each comment is a separate cell in Observable.
-Go to [observablehq.com](https://observablehq.com), create a new notebook, and add one cell per step. Cells 1 and 4
-are HTML: before pasting, click the small **ts** label at the cell's top right and choose **HTML**.
-
-### CELL 1 — Map container
-
-```html
-<link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/light/main.css" />
-<div id="viewDiv"></div>
-```
-
-### CELL 2 — Load the ArcGIS SDK
-
-```js
-window.dojoConfig = { baseUrl: "https://js.arcgis.com/4.32/dojo" };
-await import("https://js.arcgis.com/4.32/init.js");
-const require = window.require;
-```
-
-### CELL 3 — Map logic
-
-Replace `YOUR_WEBMAP_ID` with the ID you copied in Pre-Step 2.
-
-```js
-require([
-  "esri/WebMap",
-  "esri/views/MapView"
-], (WebMap, MapView) => {
-
-  const webmap = new WebMap({
-    portalItem: {
-      id: "YOUR_WEBMAP_ID"
-    }
-  });
-
-  const view = new MapView({
-    container: "viewDiv",
-    map: webmap
-  });
-});
-```
-
-### CELL 4 — Map size
-
-```html
-<style>
-  #viewDiv {
-    width: 100%;
-    height: 800px;
-  }
-</style>
-```
-
-**Done.** The map renders live inside the Observable notebook.
-
----
-
 ## Notes
 
 - The web map must be shared publicly.
-- Interactive features (pan, zoom, pop-ups) work in both options.
+- Interactive features (pan, zoom, pop-ups) remain available when embedded.
 - The web map ID is the `?id=` value in the ArcGIS item URL.
 
 ---
@@ -471,10 +411,7 @@ require([
 On Canvas, submit:
 
 1. The link to your London Cholera StoryMap (Exercise 4).
-2. Your embed from Part 2:
-   - **Option 2:** the link to your Observable notebook. Set it to **Unlisted** first (the globe icon in the
-     notebook's sidebar), so we can open it.
-   - **Option 1:** your `arcgis-map.html` file.
+2. Your `arcgis-map.html` file from Part 2.
 
 Full marks are for participating and finishing. If something broke and you could not fix it, say so and show us what
 you tried.
