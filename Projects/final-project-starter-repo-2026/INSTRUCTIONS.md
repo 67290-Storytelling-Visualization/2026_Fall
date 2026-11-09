@@ -10,7 +10,7 @@ See [timeline.md](./timeline.md) for the full phase schedule at a glance.
 
 *Absolutely no late submissions will be accepted for credit unless extenuating circumstances arise in accordance with the course syllabus.*
 
-### Phase 1: Proposal and Wireframing
+### Phase 1: Proposal and Wireframing (5 points)
 
 In this phase, you will submit a formal proposal for your project. Your proposal must include the following six sections, in this order, each as its own subheading:
 
@@ -37,7 +37,7 @@ You can use a wireframe if you think it helps to express your design ideas (opti
 - Think about how the various dashboards will flow together to make up the larger story you are trying to tell.
 - Review your design principles so you can apply them to create great dashboards!
 
-### Phase 2: Midpoint Check
+### Phase 2: Midpoint Check (5 points)
 
 This phase checks four specific, boundable things rather than asking for a full dashboard, so workload splits evenly across your team:
 
@@ -57,7 +57,7 @@ Note: You can use JavaScript, ArcGIS, and/or Tableau as your visualizations with
 
 ***Submit the deliverables to Canvas by 11:59PM on Monday, November 23, 2026.***
 
-### Phase 3: Final Project Dashboard and Final Report
+### Phase 3: Final Project Dashboard and Final Report (10 points)
 
 In this phase, your team will create the dashboard(s) for the remaining goal(s) outlined in your project proposal and then push them to the team's repository, keeping your Vercel deployment up to date.
 
@@ -70,7 +70,7 @@ In this phase, your team will create the dashboard(s) for the remaining goal(s) 
 
 ***Submit the deliverables to Canvas by 6:00PM on Monday, November 30, 2026, before class.***
 
-### Phase 4: Final Project Presentation & Peer Team Evaluations
+### Phase 4: Final Project Presentation & Peer Team Evaluations (10 points)
 
 On presentation day, present your visualization dashboard to the class, explaining the social issue, the story you aimed to convey, your arguments, and the visualization choices you made. You will fill out an evaluation of your fellow students' projects during the final project presentations.
 
