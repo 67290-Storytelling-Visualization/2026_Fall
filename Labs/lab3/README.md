@@ -105,69 +105,7 @@ When you are happy with your work, save your map. When you return to ArcGIS Onli
 
 When you are ready, we will try a filter function together.
 
-### Exercise 2: California Fires
-
-In this exercise, we create a map and a story map that illustrates the extent and dangers of recent California fires.
-
-**THE MAP**
-
-From the home page of your CMU ArcGIS Online account, create a new map (Map option at the top). A base map should
-appear. We next add various layers to visualize the extent of major California fires.
-
-Select the 'Add layer' option and, instead of 'My content', select 'ArcGIS Online'. In the Search box, enter
-'California fires'. A list of potential layers appears. Add the layer 'California Historical Fire Perimeters' by
-'California Department of ...' to your map. The layer appears on your map and the properties panel appears on the right
-of your work area. Go ahead and close the properties panel.
-
-Open the 'California Historical Fire Perimeters' layer. Note there are three layers contained within. We will examine
-recent fires. Hide the 'California Fire Perimeters (1950+)' layer and show the 'Recent Large Fire Perimeters (GT 5000
-acres)'. Save your map with a descriptive name and, optionally, some useful tags. Your map will be available in the
-Content section of your account if you need to return to it.
-
-Open the data table ( ... / Show table ). Can you identify the five largest fires, by name, since 2021? (Hint: Sort the
-table on the 'GIS Calculated Acres') field. Many of these fires caused tremendous damage and loss of life. Select one of
-the largest fires, zoom in on it, and do a quick bit of background research on it. Prepare a few facts about this fire
-to present to the class - one minute, or less. (We'll call on a few students to present their findings.)
-
-When you are happy with your work, again save your map. When you return to ArcGIS Online, you will find it under
-Content.
-
-**THE STORYMAP**
-
-Next, we create a StoryMap to illustrate your findings.
-
-Under the 9-dot array at the top (next to your name), select StoryMaps. Under the Create option, select 'Story'. A blank
-template shows up.
-
-Enter a descriptive story title (for example, maybe something like 'The Quarry Fire of 2023', with, of course, the name
-of your chosen fire.) Add a short introduction or subtitle.
-
-Your work is constantly saved and will be available in the Content section of your account, and will be present as an
-option when you return to the StoryMap builder.
-
-Download a dramatic and relevant 'cover' image for your story map. Add it to your story map where it will
-appear at the top.
-
-Under 'Design' select a Cover design and a Theme. Use one of the default themes or pick one from the Featured Themes
-gallery. Your theme should complement the story you intend to tell.
-
-Wherever you see a plus sign in green, can add content of various types. At the first green plus sign (Tell your
-story), select Text, and add a brief paragraph or two explaining the situation. If you highlight your text, various
-formatting options appear.
-
-Next, under the plus sign, select Map and add your California Fires map. If you have created other maps, they will also
-show up here. When you have selected your map, you can decide which layers you want to appear. Add some basic text below
-the map to explain it.
-
-Select the Preview option at the top of the map to preview your work at any time. Choose the small x at the bottom right
-to return to the design/edit mode.
-
-Optionally, add any other text, images, or other media that help your audience understand the story you are telling.
-
-Note: If you make any changes to your original Cal Fires map in ArcGIS, these changes will be reflected in your StoryMap
-the next time you load it.
-
-### Exercise 3: The Famous London Cholera Map (1854)
+### Exercise 2: The Famous London Cholera Map (1854)
 
 ![Death's Dispensary](images/deaths-dispensary.jpg)
 
@@ -235,7 +173,7 @@ of the areas in question seemed less likely to be infected?
 Experiment with controls or style options as you wish and save your map frequently when you reach a good checkpoint.
 (There is no 'easy' undo control.)
 
-### Exercise 4: The Famous London Cholera Map (1854) - StoryMap
+### Exercise 3: The Famous London Cholera Map (1854) - StoryMap
 
 ![Death's Dispensary](images/deaths-dispensary.jpg)
 
@@ -410,7 +348,7 @@ After the SDK script tag, paste. Replace `YOUR_WEBMAP_ID` with the ID you copied
 
 On Canvas, submit:
 
-1. The link to your London Cholera StoryMap (Exercise 4).
+1. The link to your London Cholera StoryMap (Exercise 3).
 2. Your `arcgis-map.html` file from Part 2.
 
 Full marks are for participating and finishing. If something broke and you could not fix it, say so and show us what
