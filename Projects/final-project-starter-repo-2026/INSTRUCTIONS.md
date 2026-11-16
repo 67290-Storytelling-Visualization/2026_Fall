@@ -46,7 +46,7 @@ This phase checks four specific, boundable things rather than asking for a full 
 3. **At least one annotation or illustration** on the dashboard that guides the viewer toward your story's key point.
 4. **Contribution log**: fill out [CONTRIBUTIONS.md](./CONTRIBUTIONS.md) in your repository, logging each member's contributions (code and non-code) as you work. This is not graded on "who did more," it exists so uneven workload is visible now instead of at the end.
 
-Note: You can use JavaScript, ArcGIS, and/or Tableau as your visualizations within this dashboard. To embed finished visualizations from ArcGIS and Tableau, reuse the code from Part 2 of Lab 2 (Tableau) and Lab 3 (ArcGIS); see the "Helpful Resources" section below.
+Note: You can use JavaScript, ArcGIS, and/or Tableau as your visualizations within this dashboard. To embed finished visualizations from ArcGIS and Tableau, reuse the code from Part 2 of Lab 2 (Tableau) and the optional embedding section of Lab 3 (ArcGIS); see the "Helpful Resources" section below.
 
 **Phase Deliverables**
 
@@ -182,7 +182,7 @@ The starter code is for a dashboard in Observable Framework. Here is how to get 
 
 ### How to Integrate Visualizations within Observable Dashboards (JavaScript)
 
-- **Tableau and ArcGIS maps:** paste the same code snippets from Part 2 of Lab 2 (Tableau) or Lab 3 (ArcGIS) into one of your `.md` pages. Paste them directly into the page, not inside a code block (```). The viz or map must be shared publicly, or visitors will see a sign-in box instead.
+- **Tableau and ArcGIS maps:** paste the same code snippets from Part 2 of Lab 2 (Tableau) or the optional embedding section of Lab 3 (ArcGIS) into one of your `.md` pages. Paste them directly into the page, not inside a code block (```). The viz or map must be shared publicly, or visitors will see a sign-in box instead.
 - [Instructions for Embedding ArcGIS in Observable](https://doc.arcgis.com/en/arcgis-online/share-maps/embed-maps-groups.htm)
 - [Instructions for Embedding Story Maps in Observable](https://www.esri.com/arcgis-blog/products/arcgis-online/mapping/embedding-story-maps-in-websites-and-blogs)
 - [Instructions for Embedding Tableau in Observable](https://help.tableau.com/current/pro/desktop/en-us/embed.htm)
