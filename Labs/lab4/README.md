@@ -92,20 +92,62 @@ decorate.
 
 ## Six moves that keep you in charge
 
-1. **Make it look before it writes.** Never let it guess field names — have it fetch one record and print
-   the keys. *Real example: the Qatar portal's API calls a column `segment`; its own CSV export calls the
-   same column `segment_type`. An agent that guesses writes a query that fails — or quietly returns nothing.*
-2. **After any filter, ask: "how many rows did that drop, and which ones?"** Silent row loss is the most
-   common way a correct-looking chart becomes a lie.
-3. **Say no in words.** *"No — that's a pie chart with nine slices; use a sorted bar."* That is a decision.
-   Silently fixing the code afterwards is also fine work, but it leaves no trace that you were the one deciding.
-4. **Give it your taste once, in writing.** Five house rules at the start beats re-arguing every turn.
-   For example: never truncate a bar axis · the title states the finding, not the variable · any rate names
-   its denominator · sequential data gets a sequential scale.
-5. **One gate at a time.** If it offers to build the whole thing, refuse. You cannot review what you did
-   not watch being built.
-6. **When it is confidently wrong about data, it is almost always units, denominators, or missing rows.**
-   Check those three first.
+1. **Write your requirements and taste in an `AGENTS.md` file.** Create a file called `AGENTS.md` in the top
+   folder of your project. Codex reads it automatically every time it works there, so it keeps following your
+   instructions instead of forgetting them as the chat grows. (Claude Code does the same with `CLAUDE.md`.) Write it
+   yourself, and update it when your decisions change.
+
+   ```markdown
+   - My reader is considering visiting Doha and reads on a phone.
+   - The main finding should be clear in ten seconds. Every title states a finding.
+   - Put explanations beside the marks they explain.
+   - Ask me before changing the source, excluding observations, or rewriting the main claim.
+   ```
+
+2. **Define the reader's question before choosing a chart.** Name something your reader might reasonably wonder
+   about your city, and explain why the answer matters. Keep the answer open until you have examined the data. This
+   gives you a standard for deciding whether the AI's work is relevant.
+
+   *"My reader is considering visiting Doha and assumes the heat makes outdoor activities difficult throughout the
+   year. I want to investigate when that assumption holds. First, help me define what the available weather data can
+   actually tell us."*
+
+3. **Compare alternatives using a priority you chose.** Asking for options helps only if you have a reason to prefer
+   one. State what matters most, then ask the AI to explain the tradeoffs. Use this at consequential choices; you
+   don't need alternatives for every small detail.
+
+   *"My priority is making seasonal differences easy to compare on a phone. Show me two possible chart designs and
+   explain how each serves that priority. I'll choose before you build."*
+
+   After choosing, explain your reason in your own words.
+
+4. **Require evidence before accepting a finding.** A confident explanation is easy to produce. Ask for something you
+   can inspect: actual records, calculations, missing observations, or a comparison under another reasonable
+   definition. Decide whether the evidence supports the strength of the claim.
+
+   *"Before we say 'most evenings are comfortable,' define 'comfortable,' show the calculation and its denominator,
+   and report how many evenings have missing data. Show what happens if we change the temperature threshold."*
+
+   If the result depends heavily on a debatable choice, qualify the finding or reconsider it.
+
+5. **Inspect the result and write your own diagnosis.** Open the actual visualization, including at phone size.
+   Before asking the AI to revise it, identify something specific that obstructs understanding. Explain the problem
+   for the reader and the outcome you want.
+
+   *"On my phone, I keep looking between the legend and the lines to identify each city. Put the names beside the
+   lines so readers can follow the comparison more easily."*
+
+   This makes revision an exercise in your judgment. You can ask the AI how to implement the improvement.
+
+6. **Give each chart a job—and remove it if that job is already done.** Write the question each chart answers. Then
+   imagine removing it: what would the reader lose? Keep another chart when it supplies a necessary comparison,
+   explanation, or qualification.
+
+   *"The second chart repeats the same seasonal pattern. Remove it. I want the next view to show how much conditions
+   vary within a month, because the monthly average could hide that."*
+
+   Choose the number of charts after identifying these jobs. "One chart is enough" is a defensible decision when you
+   can explain why.
 
 ---
 
@@ -143,6 +185,3 @@ wisely and stayed in charge, or gave up your agency and your taste to it. We loo
 |---|---|
 | 4 | Your agency and taste, shown in your chat history: you stayed in charge and made the decisions (the four things under What to submit) |
 | 1 | Your visualization link opens on a phone, for anyone, without a login |
-
-Hit a wall, said so, and showed what you tried? **That keeps full marks.** A session where everything went
-wrong and you stayed in charge of it is worth more than one where you said yes eleven times.
